@@ -1,0 +1,27 @@
+public class Program {
+    public static void main(String[] args) {
+        int[] dizi1 = {1,2,3,4};
+        int[] dizi2 = {1,2,3,4};
+        
+        if(dizi1.length == dizi2.length){
+            int bas = 0;
+            int son = dizi1.length-1;            
+            String mesaj = esitmi(dizi1,dizi2,bas,son)?"Diziler eşit":"Diziler eşit değil";
+            System.out.println(mesaj);
+        }else{
+            System.out.println("kontrol etmek için diziler aynı boyutta olmalı");
+        }
+    }
+    
+    static boolean esitmi(int[] dizi1,int[] dizi2,int bas,int son){
+        if(bas == son){
+            return dizi1[bas]==dizi2[bas];
+        }else{
+            int m = (bas+son)/2;
+            boolean s1 = esitmi(dizi1, dizi2, bas, m);
+            boolean s2 = esitmi(dizi1, dizi2, m+1,son);
+            
+            return s1 && s2;
+        }
+    }
+}
